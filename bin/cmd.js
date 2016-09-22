@@ -3,7 +3,7 @@ var path = require('path');
 var fs = require('fs');
 var spawn = require('child_process').spawn;
 
-var mousai = require('../lib');
+var musa = require('../lib');
 
 var appCfg = require('application-config');
 var chalk = require('chalk');
@@ -11,7 +11,7 @@ var argv = require('minimist')(process.argv.slice(2));
 
 var command = argv._[0];
 var args = argv._.slice(1);
-var config = appCfg('node-mousai');
+var config = appCfg('node-musa');
 
 var elevator = path.join(__dirname, '../audio/elevator.mp3');
 
@@ -46,7 +46,7 @@ else {
 }
 
 function help() {
-  console.log(chalk.yellow('\n    Usage') + ':\n\t$ mousai [some cmd and arguments] # play song while command runs\n\t$ mousa --set [path to mp3] # set default song\n');
+  console.log(chalk.yellow('\n    Usage') + ':\n\t$ musa [some cmd and arguments] # play song while command runs\n\t$ mousa --set [path to mp3] # set default song\n');
 }
 
 function afterConfigRead(err, options) {
@@ -63,7 +63,7 @@ function afterConfigRead(err, options) {
 }
 
 function run(options) {
-  var playSong = mousai({
+  var playSong = musa({
     path: options.path,
     repeat: true
   });

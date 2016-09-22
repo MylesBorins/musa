@@ -1,5 +1,5 @@
 {
-  "name": "mousai",
+  "name": "musa",
   "version": "1.0.1",
   "description": "summon the muse of song to serenade you as your scripts run",
   "main": "lib/index.js",
@@ -11,11 +11,11 @@
     "sound"
   ],
   "author": "Myles Borins <myles.borins@gmail.com>",
-  "repository": "https://github.com/thealphanerd/mousai",
+  "repository": "https://github.com/thealphanerd/musa",
   "license": "MIT",
   "preferGlobal": "true",
   "bin": {
-    "mousai": "bin/cmd.js"
+    "musa": "bin/cmd.js"
   },
   "directories": {
     "bin": "./bin",

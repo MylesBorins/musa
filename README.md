@@ -1,4 +1,4 @@
-# mousai
+# musa
 
 summon the muse of song to serenade you as your scripts run
 
