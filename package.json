@@ -1,6 +1,6 @@
 {
   "name": "mousai",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "summon the muse of song to serenade you as your scripts run",
   "main": "lib/index.js",
   "scripts": {
