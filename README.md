@@ -12,3 +12,7 @@ musa --reset # reset to default song
 ---
 
 Default elevator music from https://archive.org/details/ElevatorMusic_747
+
+## License
+
+MIT
