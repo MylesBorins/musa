@@ -1,0 +1,31 @@
+{
+  "name": "mousai",
+  "version": "1.0.0",
+  "description": "summon the muse of song to serenade you as your scripts run",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "muse",
+    "sound"
+  ],
+  "author": "Myles Borins <myles.borins@gmail.com>",
+  "repository": "https://github.com/thealphanerd/mousai",
+  "license": "MIT",
+  "preferGlobal": "true",
+  "bin": {
+    "mousai": "bin/cmd.js"
+  },
+  "directories": {
+    "bin": "./bin",
+    "audio": "./audio"
+  },
+  "dependencies": {
+    "application-config": "^1.0.0",
+    "lame": "^1.1.0",
+    "minimist": "^1.2.0",
+    "pump": "^1.0.1",
+    "speaker": "^0.3.0"
+  }
+}
