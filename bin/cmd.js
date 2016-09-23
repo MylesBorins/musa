@@ -15,7 +15,7 @@ var config = appCfg('node-musa');
 
 var elevator = path.join(__dirname, '../audio/elevator.mp3');
 
-if (!command && !argv.set && !argv.reset) {
+if (!command && !argv.set && !argv.reset && !argv.trash) {
   help();
   process.exit(1);
 }
@@ -41,6 +41,12 @@ else if (argv.reset) {
     return;
   });
 }
+else if (argv.trash) {
+  config.trash(function () {
+    console.log('Config has been ' + chalk.red('TRASHED'));
+    return;
+  });
+}
 else {
   config.read(afterConfigRead);
 }
@@ -54,15 +60,19 @@ function afterConfigRead(err, options) {
     run(options);
     return;
   }
-  config.write({
-    path: elevator
-  }, function () {
+  else {
+    options = {
+      path: elevator
+    }
+  }
+  config.write(options, function () {
     run(options);
     return;
   });
 }
 
 function run(options) {
+  console.log(options)
   var playSong = musa({
     path: options.path,
     repeat: true
