@@ -1,6 +1,6 @@
 {
   "name": "musa",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "description": "summon the muse of song to serenade you as your scripts run",
   "main": "./lib/index.js",
   "scripts": {
@@ -15,7 +15,7 @@
   "license": "MIT",
   "preferGlobal": "true",
   "bin": {
-    "musa": "./bin/cmd.js"
+    "musa": "bin/cmd.js"
   },
   "directories": {
     "bin": "./bin",
