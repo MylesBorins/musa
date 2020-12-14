@@ -3,20 +3,20 @@
   "version": "3.0.0",
   "description": "summon the muse of song to serenade you as your scripts run",
   "main": "./lib/index.js",
+  "bin": {
+    "musa": "./bin/cmd.js"
+  },
   "scripts": {
     "test": "./bin/cmd.js sleep 1"
   },
   "keywords": [
-    "muse",
+    "musa",
     "sound"
   ],
   "author": "Myles Borins <myles.borins@gmail.com>",
   "repository": "https://github.com/mylesborins/musa",
   "license": "MIT",
   "preferGlobal": "true",
-  "bin": {
-    "musa": "bin/cmd.js"
-  },
   "directories": {
     "bin": "./bin",
     "audio": "./audio"
