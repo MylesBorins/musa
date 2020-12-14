@@ -2,20 +2,20 @@
   "name": "musa",
   "version": "2.1.0",
   "description": "summon the muse of song to serenade you as your scripts run",
-  "main": "lib/index.js",
+  "main": "./lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./bin/cmd.js yes"
   },
   "keywords": [
     "muse",
     "sound"
   ],
   "author": "Myles Borins <myles.borins@gmail.com>",
-  "repository": "https://github.com/thealphanerd/musa",
+  "repository": "https://github.com/mylesborins/musa",
   "license": "MIT",
   "preferGlobal": "true",
   "bin": {
-    "musa": "bin/cmd.js"
+    "musa": "./bin/cmd.js"
   },
   "directories": {
     "bin": "./bin",
