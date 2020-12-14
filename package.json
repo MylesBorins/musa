@@ -21,6 +21,9 @@
     "bin": "./bin",
     "audio": "./audio"
   },
+  "engines": {
+    "node": "10 || 12 || >14"
+  },
   "dependencies": {
     "application-config": "^1.0.0",
     "chalk": "^1.1.3",
