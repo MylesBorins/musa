@@ -4,7 +4,7 @@
   "description": "summon the muse of song to serenade you as your scripts run",
   "main": "./lib/index.js",
   "scripts": {
-    "test": "./bin/cmd.js yes"
+    "test": "./bin/cmd.js sleep 1"
   },
   "keywords": [
     "muse",

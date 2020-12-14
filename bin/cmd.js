@@ -1,95 +1,75 @@
 #!/usr/bin/env node
-var path = require('path');
-var fs = require('fs');
-var spawn = require('child_process').spawn;
+const {resolve} = require('path');
+const {realpathSync} = require('fs');
+const {spawn} = require('child_process');
 
-var musa = require('../lib');
+const musa = require('../lib');
 
-var appCfg = require('application-config');
-var chalk = require('chalk');
-var argv = require('minimist')(process.argv.slice(2));
+const appCfg = require('application-config');
+const chalk = require('chalk');
+const argv = require('minimist')(process.argv.slice(2));
 
-var command = argv._[0];
-var args = argv._.slice(1);
-var config = appCfg('node-musa');
+const command = argv._[0];
+const args = argv._.slice(1);
+const config = appCfg('node-musa');
 
-var elevator = path.join(__dirname, '../audio/elevator.mp3');
+const elevator = resolve(__dirname, '../audio/elevator.mp3');
 
-if (!command && !argv.set && !argv.reset && !argv.trash) {
-  help();
-  process.exit(1);
+function help() {
+  console.log(`\n\t${chalk.yellow('Usage')}:\n\n\t$ musa [some cmd and arguments] `
+    + '# play song while command runs\n\t$ musa --set [path to mp3] # set default song\n');
 }
 
-if (argv.h || argv.help) {
+function run(options) {
+  const playSong = musa({
+    path: options.path || elevator,
+    repeat: true
+  });
+
+  const child = spawn(command, args, {
+    stdio: 'inherit'
+  });
+
+  child.on('error', (err) => {
+    throw err;
+  });
+
+  child.on('close', _ => {
+    process.exit(0);
+  });
+}
+
+if ((!command && !argv.set && !argv.reset && !argv.trash) || argv.h || argv.help) {
   help();
   process.exit(0);
 }
 
 if (argv.set) {
-  var mp3Path = fs.realpathSync(argv.set);
+  const mp3Path = realpathSync(argv.set);
   config.write({
     path: mp3Path
-  }, function (err) {
+  }, (err) => {
+    if (err) throw err;
     console.log(chalk.yellow('Default Set To: ') + mp3Path);
   });
 }
 else if (argv.reset) {
   config.write({
     path: elevator
-  }, function () {
+  }, (err) => {
+    if (err) throw err;
     console.log(chalk.yellow('Default Reset To: ') + elevator);
-    return;
   });
 }
 else if (argv.trash) {
-  config.trash(function () {
+  config.trash(function (err) {
+    if (err) throw err;
     console.log('Config has been ' + chalk.red('TRASHED'));
-    return;
   });
 }
 else {
-  config.read(afterConfigRead);
-}
-
-function help() {
-  console.log(chalk.yellow('\n    Usage') + ':\n\t$ musa [some cmd and arguments] # play song while command runs\n\t$ mousa --set [path to mp3] # set default song\n');
-}
-
-function afterConfigRead(err, options) {
-  if (options.path) {
+  config.read((err, options) => {
+    if (err) throw err;
     run(options);
-    return;
-  }
-  else {
-    options = {
-      path: elevator
-    }
-  }
-  config.write(options, function () {
-    run(options);
-    return;
-  });
-}
-
-function run(options) {
-  console.log(options)
-  var playSong = musa({
-    path: options.path,
-    repeat: true
-  });
-
-  var child = spawn(command, args, {
-    stdio: 'inherit'
-  });
-
-  child.on('error', function (err) {
-    if (err.code === 'ENOENT'); {
-      console.error(chalk.red('\nError:') + ' the command ' + chalk.yellow(command) + ' does not exist.\n');
-      process.exit(1);
-    }
-  });
-
-  child.on('close', function () {
-    playSong.kill();
   });
 }
