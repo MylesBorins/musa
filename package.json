@@ -1,6 +1,6 @@
 {
   "name": "musa",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "description": "summon the muse of song to serenade you as your scripts run",
   "main": "./lib/index.js",
   "bin": {
