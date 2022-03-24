@@ -7,8 +7,7 @@
     "musa": "./bin/cmd.js"
   },
   "scripts": {
-    "test": "./bin/cmd.js sleep 1",
-    "postinstall": "echo woot"
+    "test": "./bin/cmd.js sleep 1"
   },
   "keywords": [
     "musa",
