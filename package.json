@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@suldashi/lame": "^1.2.5",
-    "application-config": "^2.0.0",
+    "application-config": "^3.0.0",
     "chalk": "^5.0.1",
     "minimist": "^1.2.0",
     "pump": "^3.0.0",
